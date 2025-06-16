@@ -77,6 +77,192 @@
   color: #495057;
 }
 
+/* Export Section */
+.export-section {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.export-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.export-btn:hover {
+  background: #218838;
+}
+
+.clear-selection-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.clear-selection-btn:hover {
+  background: #5a6268;
+}
+
+/* Edit Button */
+.edit-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.edit-btn:hover {
+  background: #0056b3;
+}
+
+/* Edit Input Fields */
+.edit-input {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #007bff;
+  border-radius: 3px;
+  font-size: 13px;
+  background: #f8f9ff;
+  color: #495057;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #0056b3;
+  background: #ffffff;
+}
+
+/* Edit Actions */
+.edit-actions {
+  background: #e3f2fd;
+  padding: 10px 20px;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.save-edit-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.save-edit-btn:hover {
+  background: #218838;
+}
+
+.cancel-edit-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-edit-btn:hover {
+  background: #5a6268;
+}
+
+.edit-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-btn:hover {
+  background: #0056b3;
+}
+
+/* Edit Mode Styles */
+.edit-input {
+  width: 100%;
+  padding: 4px 8px;
+  border: 1px solid #007bff;
+  border-radius: 3px;
+  font-size: 13px;
+  background: #f8f9ff;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.edit-actions {
+  background: #f8f9fa;
+  padding: 10px 15px;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.save-edit-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-edit-btn:hover {
+  background: #218838;
+}
+
+.cancel-edit-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-edit-btn:hover {
+  background: #5a6268;
+}
+
 /* Table Styles */
 .property-table {
   background: #ffffff;
@@ -84,7 +270,7 @@
 
 .table-header {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 0.8fr 0.8fr 1.2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 60px 100px 150px 80px 80px 120px 150px 150px 100px 100px 150px;
   background: #f8f9fa;
   border-bottom: 2px solid #dee2e6;
   font-weight: 600;
@@ -108,7 +294,7 @@
 
 .table-row {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 0.8fr 0.8fr 1.2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 60px 100px 150px 80px 80px 120px 150px 150px 100px 100px 150px;
   border-bottom: 1px solid #e9ecef;
   transition: background-color 0.1s;
 }
@@ -133,6 +319,58 @@
 
 .table-cell:last-child {
   border-right: none;
+}
+
+/* Checkbox Cell Styling */
+.checkbox-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px !important;
+}
+
+.select-all-checkbox,
+.row-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #007bff;
+}
+
+.status-indicator {
+  color: #6c757d;
+  font-weight: bold;
+}
+
+/* Status Badge Styles */
+.status-cell {
+  padding: 8px !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 60px;
+  text-align: center;
+}
+
+.status-badge.active {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-badge.inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }
 
 /* Makler Cell Styling */
@@ -249,7 +487,7 @@
 @media (max-width: 1200px) {
   .table-header,
   .table-row {
-    grid-template-columns: 1fr 1.2fr 0.6fr 0.6fr 1fr 0.8fr 0.8fr 0.8fr 0.8fr;
+    grid-template-columns: 50px 80px 120px 60px 60px 100px 120px 120px 80px 80px 120px;
     font-size: 12px;
   }
   
@@ -272,7 +510,7 @@
   
   .table-header,
   .table-row {
-    min-width: 800px;
+    min-width: 1100px;
   }
 }
 
@@ -453,4 +691,163 @@
 
 .energy-badge.fernwaerme {
   background: #fd7e14;
+}
+
+/* Property Group Styles */
+.property-group {
+  border-bottom: 2px solid #dee2e6;
+  margin-bottom: 0;
+}
+
+.property-row {
+  background: #ffffff;
+}
+
+.property-row:hover {
+  background: #f8f9fa;
+}
+
+/* Contracts Section Styles */
+.contracts-section {
+  background: #fff9c4;
+  border-left: 4px solid #ffc107;
+  margin: 0;
+  padding: 0;
+}
+
+.contracts-header-row {
+  background: #fff3cd;
+  padding: 8px 16px;
+  border-bottom: 1px solid #ffeaa7;
+}
+
+.contracts-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: #856404;
+}
+
+.contracts-subheader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  background: #fff3cd;
+  border-bottom: 1px solid #ffeaa7;
+  font-weight: 500;
+  font-size: 12px;
+  color: #856404;
+  padding-left: 76px; /* Align with property data */
+}
+
+.contract-subheader-cell {
+  padding: 8px;
+  border-right: 1px solid #ffeaa7;
+  text-align: left;
+}
+
+.contract-subheader-cell:last-child {
+  border-right: none;
+}
+
+.contract-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-bottom: 1px solid #ffeaa7;
+  padding-left: 76px; /* Align with property data */
+  background: #fffbf0;
+}
+
+.contract-row:hover {
+  background: #fff3cd;
+}
+
+.contract-cell {
+  padding: 8px;
+  border-right: 1px solid #ffeaa7;
+  font-size: 12px;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.contract-cell:last-child {
+  border-right: none;
+}
+
+.energieart-cell {
+  justify-content: flex-start;
+}
+
+/* Energy badge styles for inline contracts */
+.energy-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.energy-badge.strom {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.energy-badge.gas {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* Checkbox cell styles */
+.checkbox-cell {
+  justify-content: center;
+  padding: 8px;
+}
+
+.row-checkbox, .select-all-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.status-indicator {
+  color: #6c757d;
+  font-weight: normal;
+}
+
+/* Status badge styles */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-badge.inactive {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Firebase Indicator */
+.firebase-indicator {
+  margin-left: 8px;
+  font-size: 14px;
+  opacity: 0.8;
+  cursor: help;
+  display: inline-block;
+}
+
+.firebase-indicator:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  transition: all 0.2s ease;
 }

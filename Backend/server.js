@@ -185,17 +185,155 @@ app.get('/api/contracts/:propertyId', async (req, res) => {
   }
 });
 
+// API 3: Update property
+app.put('/api/properties/:propertyId', async (req, res) => {
+  try {
+    const propertyId = req.params.propertyId;
+    const {
+      strasse,
+      hausnummer,
+      plz,
+      ort,
+      leistungsempfaenger_name,
+      leistungsempfaenger_strasse,
+      leistungsempfaenger_hnr,
+      leistungsempfaenger_plz,
+      leistungsempfaenger_ort
+    } = req.body;
+
+    // Validate required fields
+    if (!propertyId) {
+      return res.status(400).json({
+        success: false,
+        message: 'Property ID is required'
+      });
+    }
+
+    // Build dynamic update query
+    const updateFields = [];
+    const replacements = { propertyId };
+
+    if (strasse !== undefined) {
+      updateFields.push('strasse = :strasse');
+      replacements.strasse = strasse;
+    }
+    if (hausnummer !== undefined) {
+      updateFields.push('hausnummer = :hausnummer');
+      replacements.hausnummer = hausnummer;
+    }
+    if (plz !== undefined) {
+      updateFields.push('plz = :plz');
+      replacements.plz = plz;
+    }
+    if (ort !== undefined) {
+      updateFields.push('ort = :ort');
+      replacements.ort = ort;
+    }
+    if (leistungsempfaenger_name !== undefined) {
+      updateFields.push('leistungsempfaenger_name = :leistungsempfaenger_name');
+      replacements.leistungsempfaenger_name = leistungsempfaenger_name;
+    }
+    if (leistungsempfaenger_strasse !== undefined) {
+      updateFields.push('leistungsempfaenger_strasse = :leistungsempfaenger_strasse');
+      replacements.leistungsempfaenger_strasse = leistungsempfaenger_strasse;
+    }
+    if (leistungsempfaenger_hnr !== undefined) {
+      updateFields.push('leistungsempfaenger_hnr = :leistungsempfaenger_hnr');
+      replacements.leistungsempfaenger_hnr = leistungsempfaenger_hnr;
+    }
+    if (leistungsempfaenger_plz !== undefined) {
+      updateFields.push('leistungsempfaenger_plz = :leistungsempfaenger_plz');
+      replacements.leistungsempfaenger_plz = leistungsempfaenger_plz;
+    }
+    if (leistungsempfaenger_ort !== undefined) {
+      updateFields.push('leistungsempfaenger_ort = :leistungsempfaenger_ort');
+      replacements.leistungsempfaenger_ort = leistungsempfaenger_ort;
+    }
+
+    if (updateFields.length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: 'No fields to update'
+      });
+    }
+
+    // Add timestamp for updated_at
+    updateFields.push('aktualisiert_am = NOW()');
+
+    const updateQuery = `
+      UPDATE xs_liegenschaften 
+      SET ${updateFields.join(', ')}
+      WHERE id = :propertyId
+    `;
+
+    const [results] = await sequelize.query(updateQuery, {
+      replacements,
+      type: sequelize.QueryTypes.UPDATE
+    });
+
+    if (results === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Property not found'
+      });
+    }
+
+    // Fetch updated property to return
+    const fetchQuery = `
+      SELECT 
+        id,
+        makler_id,
+        plz,
+        status,
+        ort,
+        strasse,
+        hausnummer,
+        bemerkung_objekt,
+        erstellt_am,
+        aktualisiert_am,
+        leistungsempfaenger_name,
+        leistungsempfaenger_strasse,
+        leistungsempfaenger_hnr,
+        leistungsempfaenger_plz,
+        leistungsempfaenger_ort
+      FROM xs_liegenschaften 
+      WHERE id = :propertyId
+    `;
+
+    const updatedProperty = await sequelize.query(fetchQuery, {
+      replacements: { propertyId },
+      type: sequelize.QueryTypes.SELECT
+    });
+
+    res.json({
+      success: true,
+      message: `Property ID ${propertyId} updated successfully`,
+      data: updatedProperty[0]
+    });
+  } catch (error) {
+    console.error('Error updating property:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to update property',
+      error: error.message
+    });
+  }
+});
+
 // Root route
 app.get('/', (req, res) => {
   res.json({ 
     message: 'X-Cite Property Management API is running!',
     endpoints: {
+      'GET /api/properties': 'Get all properties with optional makler_id filter and pagination',
       'GET /api/properties/:agentId': 'Get all properties for a specific agent (makler_id)',
-      'GET /api/contracts/:propertyId': 'Get all contracts for a specific property (xs_liegenschaften_id)'
+      'GET /api/contracts/:propertyId': 'Get all contracts for a specific property (xs_liegenschaften_id)',
+      'PUT /api/properties/:propertyId': 'Update a specific property'
     },
     examples: {
       'Step 1': 'GET /api/properties/1 - Show properties under agent ID 1',
-      'Step 2': 'GET /api/contracts/13 - Show contracts attached to property ID 13'
+      'Step 2': 'GET /api/contracts/13 - Show contracts attached to property ID 13',
+      'Step 3': 'PUT /api/properties/13 - Update property ID 13'
     }
   });
 });
