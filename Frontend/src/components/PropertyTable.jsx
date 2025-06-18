@@ -511,8 +511,7 @@ function PropertyTable() {
           <>
             {" "}
             {/* Table Header */}{" "}
-            <div className="table-header">
-              <div className="header-cell checkbox-cell">
+            <div className="table-header">              <div className="header-cell checkbox-cell">
                 <input
                   type="checkbox"
                   checked={
@@ -544,9 +543,14 @@ function PropertyTable() {
                 properties.map((property, index) => (
                   <div key={property.id || index} className="property-group">
                     {/* Property Row */}
-                    <div className="table-row property-row">
-                      <div className="table-cell checkbox-cell">
-                        {property.status === 1 ? (
+                    <div className="table-row property-row">                      <div className="table-cell checkbox-cell">                        {savedToFirebase.has(property.id) ? (                          <span
+                            className="firebase-indicator"
+                            title="Saved in Firebase"
+                            style={{ color: '#4285f4', fontSize: '18px' }}
+                          >
+                            ✓
+                          </span>
+                        ) : property.status === 1 ? (
                           <input
                             type="checkbox"
                             checked={selectedRows.has(property.id)}
@@ -566,13 +570,12 @@ function PropertyTable() {
                           {property.status === 1
                             ? "Aktiv (1)"
                             : `Status (${property.status || 0})`}
-                        </span>{" "}
-                        {savedToFirebase.has(property.id) && (
+                        </span>{" "}                        {savedToFirebase.has(property.id) && (
                           <span
                             className="firebase-indicator"
                             title="Saved in Firebase"
                           >
-                            ✓
+                            
                           </span>
                         )}
                       </div>
@@ -749,6 +752,15 @@ function PropertyTable() {
                             <div className="contract-subheader-cell">
                               Energieart
                             </div>
+                             <div className="contract-subheader-cell">
+                              Zaehlernummer
+                            </div>
+                             {/* <div className="contract-subheader-cell">
+                              Zaehlpunktbezeichnung
+                            </div> */}
+                             <div className="contract-subheader-cell">
+                              Zaehlerstatus
+                            </div>
                           </div>
                           {propertyContracts[property.id].map(
                             (contract, contractIndex) => (
@@ -769,9 +781,9 @@ function PropertyTable() {
                                 <div className="contract-cell">
                                   {contract.zaehlernummer || "-"}
                                 </div>
-                                <div className="contract-cell">
+                                {/* <div className="contract-cell">
                                   {contract.zaehlpunktbezeichnung || "-"}
-                                </div>
+                                </div> */}
                                 <div className="contract-cell">
                                   <span
                                     className={`status-badge ${
