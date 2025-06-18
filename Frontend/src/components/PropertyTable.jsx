@@ -445,7 +445,7 @@ function PropertyTable() {
       <div className="filter-section">
         {" "}
         <div className="filter-group">
-          <label htmlFor="makler-filter">Filter Broker-ID:</label>
+          <label htmlFor="makler-filter">Filter Makler-ID:</label>
           <input
             type="number"
             id="makler-filter"
@@ -489,11 +489,11 @@ function PropertyTable() {
               }
             })()}
           </button>{" "}
-          {selectedRows.size === 1 && (
+          {/* {selectedRows.size === 1 && (
             <button className="edit-btn" onClick={handleEditRow}>
               Edit
             </button>
-          )}{" "}
+          )}{" "} */}
           <button
             className="clear-selection-btn"
             onClick={() => setSelectedRows(new Set())}
@@ -572,7 +572,7 @@ function PropertyTable() {
                             className="firebase-indicator"
                             title="Saved in Firebase"
                           >
-                            🔥
+                            ✓
                           </span>
                         )}
                       </div>

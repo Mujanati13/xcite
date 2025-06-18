@@ -1,3 +1,9 @@
+/* Root Container Styles */
+#root {
+  /* width: 79%; */
+  /* margin-left: 11%; */
+}
+
 /* Property Table Styles */
 .property-table-container {
   /* padding: 0; */
@@ -282,6 +288,12 @@
   padding: 12px 8px;
   border-right: 1px solid #dee2e6;
   text-align: left;
+  font-size: 12px;
+  width: auto;
+  /* width: 109px; */
+  color: #000;
+  background: #f8f9fa;
+  font-weight: 500;
 }
 
 .header-cell:last-child {
@@ -308,13 +320,14 @@
 }
 
 .table-cell {
-  padding: 10px 8px;
+  padding: 10px 15px 8px 15px;
   border-right: 1px solid #e9ecef;
   font-size: 13px;
   color: #495057;
   display: flex;
   align-items: center;
   min-height: 40px;
+  /* width: 246px; */
 }
 
 .table-cell:last-child {
@@ -357,20 +370,18 @@
   font-weight: 600;
   text-transform: uppercase;
   display: inline-block;
-  min-width: 60px;
-  text-align: center;
+  min-width: 60px;  text-align: center;
 }
 
 .status-badge.active {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+  background-color: #d1f2a5;
+  color: #2d5016;  border: 1px solid #a3d977;
 }
 
 .status-badge.inactive {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+  background-color: #ffcccb;
+  color: #d32f2f;
+  border: 1px solid #f44336;
 }
 
 /* Makler Cell Styling */
@@ -642,7 +653,7 @@
 .contract-row {
   display: grid;
   grid-template-columns: 0.5fr 1fr 1.5fr 1fr 0.8fr 1fr;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid #dee2e6; /* Updated border color */
   transition: background-color 0.1s;
 }
 
@@ -656,7 +667,7 @@
 
 .contract-cell {
   padding: 12px;
-  border-right: 1px solid #e9ecef;
+  border-right: 1px solid #dee2e6; /* Updated border color */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -678,11 +689,12 @@
 }
 
 .energy-badge.strom {
-  background: #28a745;
+  background: #ffc107;
+  color: #212529;
 }
 
 .energy-badge.gas {
-  background: #dc3545;
+  background: #007bff;
 }
 
 .energy-badge.wasser {
@@ -701,6 +713,7 @@
 
 .property-row {
   background: #ffffff;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .property-row:hover {
@@ -709,60 +722,58 @@
 
 /* Contracts Section Styles */
 .contracts-section {
-  background: #fff9c4;
-  border-left: 4px solid #ffc107;
-  margin: 0;
+  background: #f8f9fa; /* Light gray background for the whole section */
+  border-left: 4px solid #007bff; /* Blue left border */
+  margin-left: 160px; /* User adjusted */
   padding: 0;
 }
 
 .contracts-header-row {
-  background: #fff3cd;
+  background: #ffffff; /* White background for the 'Zähler' title row */
   padding: 8px 16px;
-  border-bottom: 1px solid #ffeaa7;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .contracts-title {
   font-weight: 600;
   font-size: 14px;
-  color: #856404;
+  color: #007bff; /* Blue color for 'Zähler' title */
+  margin-left: 15px; /* Adjusted margin to align with image */
 }
 
 .contracts-subheader {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  background: #fff3cd;
-  border-bottom: 1px solid #ffeaa7;
-  font-weight: 500;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* Keep your existing columns */
+  background: #f8f9fa; /* Light gray background for subheaders */
+  border-bottom: 1px solid #dee2e6;
+  font-weight: bold; /* Bold font for subheaders */
   font-size: 12px;
-  color: #856404;
-  padding-left: 76px; /* Align with property data */
+  color: #495057; /* Dark gray text for good contrast */
+  padding-left: 35px; /* Adjusted padding to align with image (checkbox width + title margin) */
 }
 
 .contract-subheader-cell {
   padding: 8px;
-  border-right: 1px solid #ffeaa7;
+  border-right: 1px solid #dee2e6;
   text-align: left;
-}
-
-.contract-subheader-cell:last-child {
-  border-right: none;
+  color: #495057; /* Ensure text color for contrast */
 }
 
 .contract-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  border-bottom: 1px solid #ffeaa7;
-  padding-left: 76px; /* Align with property data */
-  background: #fffbf0;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* Keep your existing columns */
+  border-bottom: 1px solid #dee2e6;
+  padding-left: 35px; /* Adjusted padding to align with image */
+  background: #f8f9fa; /* Light gray background for content rows */
 }
 
 .contract-row:hover {
-  background: #fff3cd;
+  background: #e9ecef; /* Slightly darker gray for hover */
 }
 
 .contract-cell {
   padding: 8px;
-  border-right: 1px solid #ffeaa7;
+  border-right: 1px solid #dee2e6;
   font-size: 12px;
   color: #495057;
   display: flex;
