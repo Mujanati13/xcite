@@ -249,16 +249,7 @@ await addDoc(collection(db, "property_exports"), exportData);
 ## 8. Authentication
 
 ### Token-Based Authentication
-The application uses a simple token-based authentication system.
-
-#### Token Generation
-```powershell
-# Navigate to Backend directory
-cd Backend
-
-# Generate a new authentication token
-node generate-token.js
-```
+The application uses a token-based authentication system.
 
 #### How It Works
 1. **Frontend**: User enters secret key to authenticate
