@@ -8,6 +8,7 @@
 5. [Firebase + MySQL Integration](#5-firebase--mysql-integration)
 6. [Installation & Setup](#6-installation--setup)
 7. [Development Scripts](#7-development-scripts)
+8. [Authentication](#8-authentication)
 
 ---
 
@@ -23,7 +24,6 @@
 - **Node.js**: Runtime environment
 - **Express**: Web framework
 - **MySQL**: Primary database
-- **Sequelize**: ORM for database operations
 
 ---
 
@@ -214,13 +214,10 @@ GET /api/contracts/123
 ### Backend Scripts
 - `npm start` - Start production server
 - `npm run dev` - Start development server with nodemon
-- `npm test` - Run tests (not configured)
 
 ### Frontend Scripts
 - `npm run dev` - Start Vite development server
 - `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run preview` - Preview production build
 
 ---
 
@@ -246,5 +243,31 @@ const exportData = {
 };
 await addDoc(collection(db, "property_exports"), exportData);
 ```
+
+---
+
+## 8. Authentication
+
+### Token-Based Authentication
+The application uses a simple token-based authentication system.
+
+#### Token Generation
+```powershell
+# Navigate to Backend directory
+cd Backend
+
+# Generate a new authentication token
+node generate-token.js
+```
+
+#### How It Works
+1. **Frontend**: User enters secret key to authenticate
+2. **Backend**: Validates the token for API access
+3. **Security**: Token required for all property data operations
+
+#### Token Details
+- **Expiration**: Tokens expire after 30 day for security
+- **Session Time**: User session remains active while token is valid (refrech every 5m)
+
 
 
