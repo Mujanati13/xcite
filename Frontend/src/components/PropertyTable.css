@@ -1,15 +1,193 @@
+/* CSS Variables for Dynamic Font Sizing */
+:root {
+  --font-size-mobile: clamp(8px, 1.3vw, 10px);
+  --font-size-tablet: clamp(9px, 1.5vw, 11px);
+  --font-size-desktop: clamp(10px, 1.7vw, 12px);
+  --font-size-large: clamp(11px, 1.9vw, 14px);
+}
+
+/* Authentication Styles */
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.auth-form {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 50px 40px;
+  text-align: center;
+  min-width: 400px;
+  max-width: 500px;
+  animation: slideInAuth 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideInAuth {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.auth-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.auth-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 15px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.auth-description {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 30px 0;
+  line-height: 1.4;
+}
+
+.auth-input-group {
+  margin-bottom: 20px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.auth-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-error {
+  background: #fee;
+  color: #dc3545;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border: 1px solid #fecaca;
+}
+
+.auth-info {
+  margin-top: 20px;
+}
+
+.auth-info small {
+  color: #888;
+  font-size: 12px;
+}
+
+.logout-section {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.logout-button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.logout-button:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.logout-button:active {
+  transform: translateY(0);
+}
+
+/* Global Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e9ecef; /* Ensure body also has gray background */
+  min-height: 100vh;
+}
+
 /* Root Container Styles */
 #root {
+  background-color: #e9ecef; /* Gray background for the root interface */
+  min-height: 100vh; /* Ensure full viewport height coverage */
+  height: 100%; /* Take full height */
+  width: 100%; /* Take full width */
   /* width: 79%; */
   /* margin-left: 11%; */
 }
 
 /* Property Table Styles */
 .property-table-container {
-  /* padding: 0; */
-  background: #f8f9fa;
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 76%; /* Updated to 76% width */
+  max-width: 80vw; /* Keep original max width */
+  margin: 0 auto; /* Keep centered */
+  background: #e9ecef; /* Gray background for the main interface */
+  height: 100vh; /* Set fixed height for proper scrolling */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: auto; /* Enable horizontal scroll when content overflows */
+  overflow-y: auto; /* Enable vertical scroll when content overflows */
+  padding-top: 60px; /* Exact height of filter section - no gap */
+  position: relative; /* Create positioning context */
 }
 
 /* Filter Section */
@@ -20,6 +198,20 @@
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+/* Fixed Top Filter Section */
+.filter-section.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 73%; /* Match the table container width */
+  max-width: 80vw; /* Match the table container max width */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #007bff;
+  height: 60px; /* Fixed height for consistent positioning */
 }
 
 .filter-group {
@@ -75,13 +267,13 @@
 /* Property Count */
 .property-count {
   background: #ffffff;
-  padding: 10px 20px;
+  padding: 23px 20px;
   text-align: center;
   border-bottom: 1px solid #e9ecef;
   font-size: 14px;
   font-weight: 600;
   color: #495057;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Export Section */
@@ -273,43 +465,128 @@
 /* Table Styles */
 .property-table {
   background: #ffffff;
+  width: 100%; /* Take full width of container */
+  position: relative; /* Create positioning context for sticky header */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
 }
 
 .table-header {
   display: grid;
-  grid-template-columns: 60px 100px 150px 80px 80px 120px 150px 150px 100px 100px 150px;
+  grid-template-columns: 4% 8% 11% 5% 6% 9% 12% 14% 10% 11% 10%; /* Adjusted: Eigentümer(12%) Eigentümer-Strasse(14%) Eigentümer-Hnr(10%) Eigentümer-PLZ(11%) = 100% total */
   background: #f8f9fa;
   border-bottom: 2px solid #dee2e6;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500; /* Standardized font weight */
+  font-size: var(--font-size-desktop); /* Dynamic font size based on screen */
   color: #495057;
+  opacity: 1; /* Standardized opacity */
+  width: 100%; /* Ensure full width */
+  height: clamp(30px, 5vh, 40px); /* Dynamic height based on viewport */
+  gap: 0; /* Remove any gaps between grid items */  position: sticky; /* Make header sticky */
+  top: 22px; /* Stick to top after filter bar (60px) + property count (46px) */
+  z-index: 999; /* High z-index but below filter section */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Add subtle shadow for depth */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
 }
 
 .header-cell {
-  padding: 12px 8px;
+  padding: clamp(2px, 0.5vh, 6px) clamp(1px, 0.3vw, 3px); /* Dynamic padding based on viewport */
   border-right: 1px solid #dee2e6;
   text-align: left;
-  font-size: 12px;
-  width: auto;
-  /* width: 109px; */
-  color: #000;
+  font-size: var(--font-size-desktop); /* Dynamic font size */
+  color: black; /* Changed to black */
   background: #f8f9fa;
-  font-weight: 500;
+  font-weight: 500; /* Standardized font weight */
+  opacity: 1; /* Standardized opacity */
+  cursor: pointer; /* Make headers clickable for sorting */
+  position: relative; /* For positioning sort icons */
+  display: flex;
+  align-items: center; /* Center align content vertically */
+  justify-content: space-between; /* Space between text and icon */
+  transition: background-color 0.2s ease; /* Smooth hover transition */
+  box-sizing: border-box; /* Include padding and borders in dimensions */
+  min-height: clamp(30px, 5vh, 40px); /* Dynamic minimum height */
+  overflow: hidden; /* Hide overflow to prevent border issues */
+  white-space: normal; /* Allow text wrapping for long headers */
+  text-overflow: ellipsis; /* Add ellipsis for extremely long text */
+  word-break: break-word; /* Break long words if necessary */
+  line-height: 1.2; /* Tighter line height for wrapped text */
+}
+
+.header-cell:hover {
+  background-color: #e9ecef !important; /* Hover effect for sortable headers with !important */
 }
 
 .header-cell:last-child {
   border-right: none;
 }
 
+/* Sort Icons */
+.sort-icon {
+  display: inline-flex;
+  flex-direction: column;
+  margin-left: 5px;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0; /* Prevent shrinking */
+  min-width: 12px; /* Ensure minimum width */
+  height: 12px; /* Fixed height */
+  position: relative;
+  z-index: 2; /* Above the overlay */
+}
+
+.header-cell:hover .sort-icon {
+  opacity: 0.7;
+}
+
+.sort-icon.active {
+  opacity: 1;
+}
+
+.sort-arrow {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  margin: 1px 0;
+}
+
+.sort-arrow.up {
+  border-bottom: 5px solid #495057;
+}
+
+.sort-arrow.down {
+  border-top: 5px solid #495057;
+}
+
+.sort-arrow.active {
+  border-bottom-color: #007bff; /* Blue for active ascending */
+  border-top-color: #007bff; /* Blue for active descending */
+}
+
+/* Sort states */
+.header-cell.sort-asc .sort-arrow.up {
+  border-bottom-color: #007bff;
+}
+
+.header-cell.sort-desc .sort-arrow.down {
+  border-top-color: #007bff;
+}
+
 .table-body {
   min-height: 400px;
+  border: 1px solid #e9ecef; /* Add border around table body */
+  border-top: none; /* Remove top border since header has bottom border */
 }
 
 .table-row {
   display: grid;
-  grid-template-columns: 60px 100px 150px 80px 80px 120px 150px 150px 100px 100px 150px;
+  grid-template-columns: 4% 8% 11% 5% 6% 9% 12% 14% 10% 11% 10%; /* Same as header - Eigentümer(12%) Eigentümer-Hnr(10%) Eigentümer-PLZ(11%) */
+  grid-template-rows: minmax(clamp(40px, 6vh, 60px), auto); /* Dynamic minimum height */
   border-bottom: 1px solid #e9ecef;
   transition: background-color 0.1s;
+  align-items: stretch; /* Make all cells stretch to the same height */
 }
 
 .table-row:hover {
@@ -320,27 +597,51 @@
   background-color: #fdfdfd;
 }
 
+.table-row:last-child {
+  border-bottom: 1px solid #e9ecef; /* Ensure last row has bottom border */
+}
+
 .table-cell {
-  padding: 10px 15px 8px 15px;
+  padding: clamp(2px, 0.5vh, 6px) clamp(1px, 0.3vw, 3px); /* Dynamic padding based on viewport */
   border-right: 1px solid #e9ecef;
-  font-size: 13px;
+  border-bottom: 1px solid #e9ecef; /* Add bottom border to ensure complete cell enclosure */
+  font-size: var(--font-size-desktop); /* Dynamic font size */
   color: #495057;
   display: flex;
-  align-items: center;
-  min-height: 40px;
-  /* width: 246px; */
+  align-items: center; /* Center align content vertically to fix status alignment */
+  justify-content: flex-start; /* Align content to left */
+  text-align: left; /* Align text to left */
+  box-sizing: border-box; /* Include padding and borders in dimensions */
+  word-wrap: break-word; /* Allow long text to wrap */
+  overflow-wrap: break-word; /* Break long words if needed */
+  height: 100%; /* Take full height of the grid cell */
+  position: relative; /* Enable positioning for pseudo-elements if needed */
+  overflow: hidden; /* Hide overflow to prevent border spillage */
+  /* Remove align-self: stretch as it's not needed with grid-template-rows */
 }
 
 .table-cell:last-child {
   border-right: none;
 }
 
+.table-cell:empty {
+  height: 100%; /* Ensure empty cells take full grid cell height */
+  border-right: 1px solid #e9ecef; /* Ensure empty cells have right borders */
+  border-bottom: 1px solid #e9ecef; /* Ensure empty cells have bottom borders */
+}
+
+.table-cell:empty:last-child {
+  border-right: none; /* Remove right border from empty last cell */
+}
+
 /* Checkbox Cell Styling */
 .checkbox-cell {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 8px !important;
+  justify-content: flex-start; /* Align content to the left */
+  padding: 8px 2px !important; /* Standardized padding: top/bottom 8px, left/right 2px */
+  height: 100%; /* Take full height of the grid cell */
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
 }
 
 .select-all-checkbox,
@@ -358,25 +659,35 @@
 
 /* Status Badge Styles */
 .status-cell {
-  padding: 8px !important;
+  padding: 8px 2px !important; /* Standardized padding: top/bottom 8px, left/right 2px */
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: center; /* Center align content vertically */
+  justify-content: flex-start; /* Align content to left */
+  height: 100%; /* Take full height of the grid cell */
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
+  overflow: hidden; /* Prevent overflow */
 }
 
 .status-badge {
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 11px;
+  padding: 3px 6px; /* Reduced padding for compactness */
+  border-radius: 8px; /* Smaller border radius */
+  font-size: 10px; /* Smaller font size */
   font-weight: 600;
   text-transform: uppercase;
   display: inline-block;
-  min-width: 60px;  text-align: center;
+  min-width: 50px; /* Reduced minimum width */
+  max-width: 60px; /* Maximum width to prevent overflow */
+  text-align: center; /* Center text within badge */
+  line-height: 1.2; /* Improved line height */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis for long text */
 }
 
 .status-badge.active {
   background-color: #d1f2a5;
-  color: #2d5016;  border: 1px solid #a3d977;
+  color: #2d5016;
+  border: 1px solid #a3d977;
 }
 
 .status-badge.inactive {
@@ -389,6 +700,7 @@
 .makler-cell {
   color: #28a745;
   font-weight: 500;
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
 }
 
 .makler-name {
@@ -425,20 +737,23 @@
 
 /* B2B Cell */
 .b2b-cell {
-  text-align: center;
-  justify-content: center;
+  text-align: left; /* Align text to left */
+  justify-content: flex-start; /* Align content to left */
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
 }
 
 /* XCW Cell */
 .xcw-cell {
-  text-align: center;
-  justify-content: center;
+  text-align: left; /* Align text to left */
+  justify-content: flex-start; /* Align content to left */
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
 }
 
 /* Date Cell */
 .date-cell {
   font-size: 12px;
   color: #6c757d;
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
 }
 
 /* Loading and No Data */
@@ -486,7 +801,7 @@
 .pagination-btn:disabled {
   background: #6c757d;
   cursor: not-allowed;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .pagination-info {
@@ -495,104 +810,362 @@
   font-weight: 500;
 }
 
+/* Modern Notification Styles - Clean Design */
+.modern-notification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modern-notification {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 40px 50px;
+  text-align: center;
+  min-width: 350px;
+  max-width: 500px;
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.notification-icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.success-checkmark {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark-circle {
+  width: 60px;
+  height: 60px;
+  border: 3px solid #a8e6a3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a8e6a3;
+  background: rgba(168, 230, 163, 0.1);
+  animation: checkmarkPulse 0.6s ease;
+}
+
+@keyframes checkmarkPulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.notification-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+  letter-spacing: -0.5px;
+}
+
+.notification-message {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 30px 0;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.notification-ok-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.notification-ok-btn:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.notification-ok-btn:active {
+  transform: translateY(0);
+}
+
+/* Error notification styles */
+.modern-notification.error .notification-icon {
+  color: #dc3545;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.modern-notification.error .notification-title {
+  color: #dc3545;
+}
+
+/* Warning notification styles */
+.modern-notification.warning .notification-icon {
+  color: #ffc107;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.modern-notification.warning .notification-title {
+  color: #856404;
+}
+
+.modern-notification.warning .notification-message {
+  color: #856404;
+}
+
+/* Info notification styles */
+.modern-notification.info .notification-icon {
+  color: #17a2b8;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.modern-notification.info .notification-title {
+  color: #17a2b8;
+}
+
+/* Loading notification styles */
+.modern-notification.loading .notification-icon {
+  color: #007bff;
+}
+
+.modern-notification.loading .notification-title {
+  color: #007bff;
+}
+
+.modern-notification.loading .notification-message {
+  color: #007bff;
+}
+
+.loading-spinner {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e3f2fd;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .modern-notification {
+    min-width: 280px;
+    max-width: 90vw;
+    padding: 30px 35px;
+  }
+  
+  .success-checkmark {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .checkmark-circle {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .notification-title {
+    font-size: 20px;
+  }
+  
+  .notification-message {
+    font-size: 14px;
+  }
+  
+  .notification-ok-btn {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
   .table-header,
   .table-row {
-    grid-template-columns: 50px 80px 120px 60px 60px 100px 120px 120px 80px 80px 120px;
-    font-size: 12px;
+    grid-template-columns: 3% 7% 12% 5% 6% 8% 12% 12% 9% 10% 9%; /* Mobile: Eigentümer(12%) Eigentümer-Strasse(12%) Eigentümer-Hnr(9%) Eigentümer-PLZ(10%) = 93% */
+    font-size: var(--font-size-mobile); /* Dynamic mobile font size */
+  }
+  .table-header {
+    position: sticky;
+    top: 0; /* Stick to top of container (mobile already has proper padding) */
+    z-index: 999; /* High z-index but below filter */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    height: clamp(25px, 4vh, 35px); /* Smaller height on mobile */
+  }
+  
+  .table-row {
+    grid-template-rows: minmax(clamp(35px, 5vh, 50px), auto); /* Smaller rows on mobile */
   }
   
   .table-cell {
-    padding: 8px 6px;
-    font-size: 12px;
+    font-size: var(--font-size-mobile);
+  }
+  
+  .header-cell {
+    font-size: var(--font-size-mobile);
+    min-height: clamp(25px, 4vh, 35px);
   }
 }
 
 @media (max-width: 768px) {
+  .property-table-container {
+    width: 95%; /* Use more width on mobile devices */
+    max-width: 95vw;
+  }
   .filter-section {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
   }
-  
+
   .property-table {
     overflow-x: auto;
   }
-  
+
   .table-header,
   .table-row {
     min-width: 1100px;
+  }
+  /* Contracts table responsive adjustments */
+  .contracts-section {
+    width: 380px; /* Fixed width: 95px * 4 = 380px for mobile */
+    max-width: 380px;
+    min-width: 380px;
+    margin-left: 10px; /* Reduce left margin on mobile */
+    overflow: hidden; /* Disable overflow on mobile too */
+  }
+  .contracts-subheader,
+  .contract-row {
+    grid-template-columns: repeat(4, 95px); /* 95px * 4 = 380px for mobile */
+  }
+  
+  .contract-row {
+    grid-template-rows: minmax(40px, auto); /* Maintain row height control on mobile */
   }
 }
 
 /* Responsive Design for Big Screens */
 @media (min-width: 1920px) {
   .table-header {
-    grid-template-columns: 80px 120px 220px 100px 100px 160px 220px 220px 140px 140px 200px;
-    font-size: 16px;
-    padding: 0 20px;
+    grid-template-columns: 3% 7% 11% 4% 6% 9% 13% 15% 10% 12% 11%; /* Large screen: Eigentümer(13%) Eigentümer-Strasse(15%) Eigentümer-Hnr(10%) Eigentümer-PLZ(12%) = 101% */
+    font-size: var(--font-size-large); /* Dynamic large screen font size */
+    position: sticky;
+    top: 0; /* Position at top of container (container already has padding) */
+    z-index: 999; /* High z-index but below filter */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
   
   .header-cell {
-    padding: 16px 8px;
-    font-size: 14px;
+    font-size: var(--font-size-large);
     font-weight: 600;
     white-space: nowrap;
-    overflow: visible;
-    text-overflow: clip;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 100%;
-    text-align: center;
-  }
-  
-  .table-row {
-    grid-template-columns: 80px 120px 220px 100px 100px 160px 220px 220px 140px 140px 200px;
-    padding: 0 20px;
+    text-align: left;
+  }  .table-row {
+    grid-template-columns: 3% 7% 11% 4% 6% 9% 13% 15% 10% 12% 11%; /* Same as header - Eigentümer(13%) Eigentümer-Hnr(10%) Eigentümer-PLZ(12%) */
+    grid-template-rows: minmax(clamp(45px, 7vh, 65px), auto); /* Dynamic row height */
   }
   
   .table-cell {
-    padding: 14px 8px;
-    font-size: 14px;
-  }
-  
-  .property-table-container {
-    max-width: 1900px;
-    margin: 0 auto;
-    padding: 0 40px;
+    font-size: var(--font-size-large);
   }
 }
 
 @media (min-width: 2560px) {
   .table-header {
-    grid-template-columns: 100px 140px 280px 120px 120px 200px 280px 280px 160px 160px 240px;
-    font-size: 18px;
-    padding: 0 40px;
+    grid-template-columns: 3% 6% 12% 4% 6% 10% 14% 16% 11% 12% 12%; /* Ultra-wide: Eigentümer(14%) Eigentümer-Strasse(16%) Eigentümer-Hnr(11%) Eigentümer-PLZ(12%) = 106% */
+    font-size: var(--font-size-large); /* Dynamic ultra-wide font size */
+    position: sticky;
+    top: 0; /* Position at top of container (container already has padding) */
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
   
   .header-cell {
-    padding: 20px 10px;
-    font-size: 16px;
+    font-size: var(--font-size-large);
     white-space: nowrap;
-    overflow: visible;
-    text-overflow: clip;
+    overflow: hidden;
+    text-overflow: ellipsis;
     width: 100%;
-    text-align: center;
-  }
-  
-  .table-row {
-    grid-template-columns: 100px 140px 280px 120px 120px 200px 280px 280px 160px 160px 240px;
-    padding: 0 40px;
+    text-align: left;
+  }  .table-row {
+    grid-template-columns: 3% 6% 12% 4% 6% 10% 14% 16% 11% 12% 12%; /* Same as header - Eigentümer(14%) Eigentümer-Hnr(11%) Eigentümer-PLZ(12%) */
+    grid-template-rows: minmax(clamp(50px, 8vh, 70px), auto); /* Dynamic ultra-wide row height */
   }
   
   .table-cell {
-    padding: 18px 10px;
-    font-size: 16px;
+    font-size: var(--font-size-large);
   }
-  
-  .property-table-container {
-    max-width: 2500px;
+    .property-table-container {
+    width: 76%; /* Updated to 76% width on extra large screens */
+    max-width: 80vw; /* Keep original max width */
     margin: 0 auto;
-    padding: 0 60px;
   }
 }
 
@@ -601,6 +1174,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%; /* Take full height of the grid cell */
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
 }
 
 .view-contracts-btn {
@@ -687,7 +1262,8 @@
   flex: 1;
 }
 
-.loading, .no-contracts {
+.loading,
+.no-contracts {
   text-align: center;
   padding: 40px;
   color: #6c757d;
@@ -712,9 +1288,9 @@
 }
 
 .contract-header-cell {
-  padding: 12px;
+  padding: 8px 2px; /* Standardized padding: top/bottom 8px, left/right 2px */
   border-right: 1px solid #dee2e6;
-  text-align: center;
+  text-align: left; /* Align text to left */
 }
 
 .contract-header-cell:last-child {
@@ -737,7 +1313,7 @@
 }
 
 .contract-cell {
-  padding: 12px;
+  padding: 8px 2px; /* Standardized padding: top/bottom 8px, left/right 2px */
   border-right: 1px solid #dee2e6; /* Updated border color */
   display: flex;
   align-items: center;
@@ -793,71 +1369,116 @@
 
 /* Contracts Section Styles */
 .contracts-section {
-  background: #f8f9fa; /* Light gray background for the whole section */
-  border-left: 4px solid #007bff; /* Blue left border */
-  margin-left: 160px; /* User adjusted */
+  background: #ffffff; /* White background for the table */
+  border-left: 2px solid #007bff; /* Keep only the blue left border */
+  margin-left: 98px; /* User adjusted */
   padding: 0;
+  width: 600px; /* Fixed width: 120px * 4 = 480px */
+  max-width: 600px; /* Exact fixed width */
+  min-width: 600px; /* Exact fixed width */
+  overflow: hidden; /* Disable overflow - no scrolling */
 }
 
 .contracts-header-row {
   background: #ffffff; /* White background for the 'Zähler' title row */
-  padding: 8px 16px;
-  border-bottom: 1px solid #dee2e6;
+  padding: 2px; /* Set to 2px padding */
+  border-bottom: 1px solid #dee2e6; /* Add bottom border for separation */
 }
 
 .contracts-title {
-  font-weight: 600;
-  font-size: 14px;
-  color: #007bff; /* Blue color for 'Zähler' title */
-  margin-left: 15px; /* Adjusted margin to align with image */
+  font-weight: 500; /* Standardized font weight */
+  font-size: 12px; /* Standardized font size */
+  color: #000000; /* Standardized color */
+  margin-left: 2px; /* Adjusted margin to align with image */
+  text-align: left; /* Align text to start */
+  opacity: 1; /* Standardized opacity */
 }
 
 .contracts-subheader {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* Keep your existing columns */
+  grid-template-columns: repeat(4, 150px); /* Fixed width columns that total 480px */
   background: #f8f9fa; /* Light gray background for subheaders */
-  border-bottom: 1px solid #dee2e6;
-  font-weight: bold; /* Bold font for subheaders */
-  font-size: 12px;
-  color: #495057; /* Dark gray text for good contrast */
-  padding-left: 35px; /* Adjusted padding to align with image (checkbox width + title margin) */
+  border-bottom: 1px solid #dee2e6; /* Add bottom border for separation */
+  font-weight: 500; /* Standardized font weight */
+  font-size: 12px; /* Standardized font size */
+  color: #495057; /* Standardized color */
+  padding-left: 2px; /* Set to 2px padding */
+  opacity: 1; /* Standardized opacity */
+  width: 100%; /* Take full width of container */
 }
 
 .contract-subheader-cell {
-  padding: 8px;
-  border-right: 1px solid #dee2e6;
-  text-align: left;
-  color: #495057; /* Ensure text color for contrast */
+  padding: 8px 2px; /* Standardized padding: top/bottom 8px, left/right 2px */
+  border-right: 1px solid #dee2e6; /* Add right border between cells */
+  border-bottom: 1px solid #dee2e6; /* Add bottom border for complete coverage */
+  text-align: left; /* Align text to start */
+  color: #000000; /* Standardized color */
+  font-weight: 500; /* Standardized font weight */
+  font-size: 12px; /* Standardized font size */
+  opacity: 1; /* Standardized opacity */
+  min-height: 40px; /* Ensure minimum height */
+  box-sizing: border-box; /* Include padding and border in calculations */
+  display: flex;
+  align-items: center;
+}
+
+.contract-subheader-cell:last-child {
+  border-right: none; /* Remove border from last cell */
 }
 
 .contract-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* Keep your existing columns */
-  border-bottom: 1px solid #dee2e6;
-  padding-left: 35px; /* Adjusted padding to align with image */
-  background: #f8f9fa; /* Light gray background for content rows */
+  grid-template-columns: repeat(4, 150px); /* Fixed width columns that total 480px */
+  grid-template-rows: minmax(40px, auto); /* Use minmax to allow growth while maintaining minimum height */
+  padding-left: 2px; /* Set to 2px padding */
+  background: #ffffff; /* White background for content rows */
+  width: 100%; /* Take full width of container */
+  border-bottom: 1px solid #e9ecef; /* Add subtle bottom border between rows */
+  align-items: stretch; /* Make all cells stretch to the same height */
+}
+
+.contract-row:last-child {
+  border-bottom: 1px solid #e9ecef; /* Ensure last row has bottom border */
 }
 
 .contract-row:hover {
-  background: #e9ecef; /* Slightly darker gray for hover */
+  background: #f8f9fa; /* Light gray for hover */
 }
 
 .contract-cell {
-  padding: 8px;
-  border-right: 1px solid #dee2e6;
-  font-size: 12px;
+  padding: 8px 2px; /* Standardized padding: top/bottom 8px, left/right 2px */
+  border-right: 1px solid #e9ecef; /* Add right border between cells */
+  border-bottom: 1px solid #e9ecef; /* Add bottom border to ensure coverage */
+  font-size: 13px; /* Match property table cell font size */
   color: #495057;
   display: flex;
-  align-items: center;
-  min-height: 36px;
+  align-items: flex-start; /* Align content to top of cell */
+  justify-content: flex-start; /* Ensure text starts from left */
+  text-align: left; /* Align text to start */
+  height: 100%; /* Take full height of the grid cell */
+  box-sizing: border-box; /* Include padding and border in height calculation */
+  opacity: 1; /* Make cell content fully visible */
+  word-wrap: break-word; /* Allow long text to wrap */
+  overflow-wrap: break-word; /* Break long words if needed */
 }
 
 .contract-cell:last-child {
-  border-right: none;
+  border-right: none; /* Remove border from last cell */
+}
+
+.contract-cell:empty {
+  height: 100%; /* Ensure empty cells maintain full grid cell height */
+  border-right: 1px solid #e9ecef; /* Ensure empty cells have borders */
+  border-bottom: 1px solid #e9ecef; /* Ensure empty cells have borders */
+}
+
+.contract-cell:empty:last-child {
+  border-right: none; /* Remove right border from empty last cell */
 }
 
 .energieart-cell {
   justify-content: flex-start;
+  border-bottom: 1px solid #e9ecef; /* Add bottom border for consistency */
 }
 
 /* Energy badge styles for inline contracts */
@@ -883,11 +1504,12 @@
 
 /* Checkbox cell styles */
 .checkbox-cell {
-  justify-content: center;
-  padding: 8px;
+  justify-content: flex-start; /* Align content to the left */
+  padding: 8px 2px; /* Standardized padding: top/bottom 8px, left/right 2px */
 }
 
-.row-checkbox, .select-all-checkbox {
+.row-checkbox,
+.select-all-checkbox {
   width: 16px;
   height: 16px;
   cursor: pointer;
@@ -922,14 +1544,85 @@
 /* Firebase Indicator */
 .firebase-indicator {
   margin-left: 8px;
-  font-size: 14px;
-  opacity: 0.8;
+  font-size: 20px; /* Make the checkmark bigger */
+  opacity: 1; /* Make it fully visible */
   cursor: help;
   display: inline-block;
+  font-weight: bold; /* Make it bolder */
 }
 
 .firebase-indicator:hover {
   opacity: 1;
-  transform: scale(1.2);
+  transform: scale(1.3); /* Slightly bigger scale on hover */
   transition: all 0.2s ease;
+}
+
+/* Filter Section Button Adjustments */
+.filter-section .export-btn {
+  margin-left: auto; /* Push export button to the right */
+}
+
+.filter-section .clear-selection-btn {
+  margin-left: 8px; /* Small gap between export and clear buttons */
+}
+
+/* Responsive adjustments for fixed filter section */
+@media (max-width: 768px) {
+  .filter-section.fixed-top {
+    width: 76%;
+    max-width: 80vw;
+    padding: 12px 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 80px; /* Fixed height for mobile */
+  }
+  
+  .filter-section .export-btn,
+  .filter-section .clear-selection-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+    .property-table-container {
+    padding-top: 80px; /* Match mobile filter height - no gap */
+  }
+    .table-header {
+    top: 126px; /* Match mobile filter height (80px) + property count (46px) for sticky positioning */
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-section.fixed-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    height: 100px; /* Taller height for very small screens */
+  }
+  
+  .filter-group {
+    justify-content: center;
+  }
+  
+  .filter-section .export-btn {
+    margin-left: 0;
+  }
+  
+  .property-table-container {
+    padding-top: 100px; /* Match very small screen filter height - no gap */
+  }
+    .table-header {
+    top: 146px; /* Match very small screen filter height (100px) + property count (46px) for sticky positioning */
+  }
+}
+
+/* All Saved Indicator Styles */
+.all-saved-indicator {
+  color: #28a745;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.8;
+  cursor: default;
+}
+
+.all-saved-indicator:hover {
+  opacity: 1;
 }

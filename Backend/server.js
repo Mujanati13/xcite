@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/database');
+const { router: authRouter, authenticateToken } = require('./routes/auth');
 require('dotenv').config();
 
 const app = express();
@@ -9,6 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Auth routes (unprotected)
+app.use('/api/auth', authRouter);
 
 // Database connection and sync
 const connectDB = async () => {
@@ -22,8 +26,8 @@ const connectDB = async () => {
   }
 };
 
-// API 1: Get all properties with optional makler filter and pagination
-app.get('/api/properties', async (req, res) => {
+// API 1: Get all properties with optional makler filter and pagination (Protected)
+app.get('/api/properties', authenticateToken, async (req, res) => {
   try {
     const { makler_id, page = 1, limit = 50 } = req.query;
     const offset = (page - 1) * limit;
@@ -105,7 +109,7 @@ app.get('/api/properties', async (req, res) => {
 });
 
 // API 1b: Get properties by specific agent ID (backward compatibility)
-app.get('/api/properties/:agentId', async (req, res) => {
+app.get('/api/properties/:agentId', authenticateToken, async (req, res) => {
   try {
     const agentId = req.params.agentId;
     
@@ -159,7 +163,7 @@ app.get('/api/properties/:agentId', async (req, res) => {
 });
 
 // API 2:
-app.get('/api/contracts/:propertyId', async (req, res) => {
+app.get('/api/contracts/:propertyId', authenticateToken, async (req, res) => {
   try {
     const propertyId = req.params.propertyId;
     
@@ -186,7 +190,7 @@ app.get('/api/contracts/:propertyId', async (req, res) => {
 });
 
 // API 3: Update property
-app.put('/api/properties/:propertyId', async (req, res) => {
+app.put('/api/properties/:propertyId', authenticateToken, async (req, res) => {
   try {
     const propertyId = req.params.propertyId;
     const {
